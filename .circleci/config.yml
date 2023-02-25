@@ -20,9 +20,17 @@ jobs:
       - checkout
       - run:
           name: "Say World"
-          command: "echo World"
-      - run: echo "${CURRENT_USER}"
-      - run: echo  "<< pipeline.id >>"
+          command: "echo World > log.txt"
+      - run: echo "${CURRENT_USER} >> log.txt"
+      - run: echo  "<< pipeline.id >> log.txt"
+      - attach_workspace:
+          at: /var/log
+  read_log_file:
+    steps:
+      - checkout
+      - run: cat 'log.txt'
+      - attach_workspace:
+          at: /var/log
 workflows:
   say-hello-workflow:
     jobs:
@@ -33,4 +41,7 @@ workflows:
     - print_world:
         requires:
           - print_hello
+    - read_log_file:
+        requires:
+          - print_world
   
