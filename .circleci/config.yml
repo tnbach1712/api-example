@@ -22,9 +22,9 @@ jobs:
           mkdir logs
           echo "hello" > /tmp/logs/log.txt
       - persist_to_workspace:
-          root: /tmp/logs
+          root: /tmp
           paths:
-            - "**/*"
+            - logs/log.txt
   read_log_file:
     docker:
       - image: circleci/node:13.8.0
