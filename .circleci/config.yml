@@ -20,9 +20,9 @@ jobs:
       - checkout
       - run: |
           mkdir logs
-          echo "hello" > /tmp/logs/log.txt
+          echo "hello" > logs/log.txt
       - persist_to_workspace:
-          root: /tmp
+          root: ~/
           paths:
             - logs/log.txt
   read_log_file:
