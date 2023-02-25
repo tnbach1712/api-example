@@ -27,7 +27,7 @@ jobs:
           mkdir /tmp/logs
           echo "hello" > /tmp/logs/log.txt
       - sayhello:
-        to: Bachtn
+          to: Bachtn
       - persist_to_workspace:
           root: /tmp
           paths:
