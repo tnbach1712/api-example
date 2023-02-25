@@ -31,7 +31,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
-      - run: cat "~/log.txt"
+      - run: cat ~/log.txt
 workflows:
   say-hello-workflow:
     jobs:
