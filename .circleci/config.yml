@@ -22,7 +22,6 @@ jobs:
           name: "Say World"
           command: "echo World > log.txt"
       - run: echo "${CURRENT_USER} >> log.txt"
-      - run: echo "<< pipeline.id >>  >> log.txt"
       - persist_to_workspace:
           at: /var/log
   read_log_file:
