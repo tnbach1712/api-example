@@ -19,8 +19,8 @@ jobs:
     steps:
       - checkout
       - run: |
-          mkdir /tmp/logs
-          echo "hello" > /tmp/logs/log.txt
+          mkdir logs
+          echo "hello" > logs/log.txt
       - persist_to_workspace:
           root: /tmp
           paths:
@@ -33,6 +33,7 @@ jobs:
       - attach_workspace:
           at: /tmp/logs
       - run: echo $(ls /tmp)
+      - run: echo $(ls /tmp/logs/)
       - run: echo $(ls /tmp/logs/logs)
       - run: cat /tmp/logs/log.txt
 workflows:
