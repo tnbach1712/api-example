@@ -42,6 +42,7 @@ jobs:
       - run: echo $(ls /tmp/logs/)
       - run: echo $(ls /tmp/logs/logs)
       - run: cat /tmp/logs/logs/log.txt
+      - run: cat "/tmp/log.txt"
       - run:
           name: Only show when onFail
           when: on_fail
