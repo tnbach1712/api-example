@@ -6,16 +6,16 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 jobs:
   print_hello:
-    # docker:
-    #   - image: circleci/node:13.8.0
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
           name: "Say hello"
           command: "echo Hello"
   print_world:
-    # docker:
-    #   - image: circleci/node:13.8.0
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - run: |
@@ -26,8 +26,8 @@ jobs:
           paths:
             - "**/*"
   read_log_file:
-    # docker:
-    #   - image: circleci/node:13.8.0
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - attach_workspace:
