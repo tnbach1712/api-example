@@ -21,7 +21,9 @@ jobs:
       - run: |
           echo "hello" > log.txt
       - persist_to_workspace:
-          at: /var/log
+          root: /var/log
+          paths:
+            - /
   read_log_file:
     docker:
       - image: circleci/node:13.8.0
