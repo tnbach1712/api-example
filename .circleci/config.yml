@@ -19,8 +19,8 @@ jobs:
     steps:
       - checkout"
       - run: |
-        echo "hello" > log.txt
-        echo "${CURRENT_USER} >> log.txt"
+          echo "hello" > log.txt
+          echo "${CURRENT_USER} >> log.txt"
       - persist_to_workspace:
           at: /var/log
   read_log_file:
