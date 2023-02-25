@@ -31,11 +31,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp
+          at: /tmp/logs
       - run: echo $(ls /tmp)
       - run: echo $(ls /tmp/logs/)
       - run: echo $(ls /tmp/logs/logs)
-      - run: cat /tmp/logs/log.txt
+      - run: cat /tmp/logs/logs/log.txt
 workflows:
   say-hello-workflow:
     jobs:
