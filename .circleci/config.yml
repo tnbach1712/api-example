@@ -42,6 +42,10 @@ jobs:
       - run: echo $(ls /tmp/logs/)
       - run: echo $(ls /tmp/logs/logs)
       - run: cat /tmp/logs/logs/log.txt
+      - run:
+        name: Only show when onFail
+        when: on_fail
+        command: echo 'On Fail'
 workflows:
   say-hello-workflow:
     jobs:
