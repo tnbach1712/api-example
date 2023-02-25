@@ -21,10 +21,8 @@ jobs:
       - run:
           name: "Say World"
           command: "echo World"
-      - run:
-          name: "Print ENV"
-          command: "echo ${pipeline.id} ${CURRENT_USER}"
-
+      - run: echo "${CURRENT_USER}"
+      - run: echo  "<< pipeline.id >>"
 workflows:
   say-hello-workflow:
     jobs:
