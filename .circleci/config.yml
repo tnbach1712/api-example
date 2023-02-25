@@ -33,7 +33,7 @@ jobs:
       - attach_workspace:
           at: /tmp/logs
       - run: echo $(ls /tmp)
-      - run: echo $(ls /tmp/logs)
+      - run: echo $(ls /tmp/logs/logs)
       - run: cat /tmp/logs/log.txt
 workflows:
   say-hello-workflow:
