@@ -1,33 +1,39 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
+defaultds: &defaults
+  docker:
+      - image: circleci/node:13.8.0
 
 orbs:
   welcome: circleci/welcome-orb@0.4.1
-jobs:
-  print_hello:
-    docker:
-      - image: circleci/node:13.8.0
+
+commands:
+  sayhello:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "World"
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello"
+      - run: echo Hello << parameters.to >> !!!
+
+jobs:
   print_world:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *defaults
     steps:
       - checkout
       - run: |
           mkdir /tmp/logs
           echo "hello" > /tmp/logs/log.txt
+      - sayhello:
+        to: Bachtn
       - persist_to_workspace:
           root: /tmp
           paths:
             - "**/*"
   read_log_file:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *defaults
     steps:
       - checkout
       - attach_workspace:
@@ -40,12 +46,7 @@ workflows:
   say-hello-workflow:
     jobs:
     - welcome/run
-    - print_hello:
-        requires:
-          - welcome/run
-    - print_world:
-        requires:
-          - print_hello
+    - print_world
     - read_log_file:
         requires:
           - print_world
