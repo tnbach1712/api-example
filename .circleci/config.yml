@@ -19,22 +19,19 @@ jobs:
     steps:
       - checkout
       - run: |
-          mkdir logs
-          echo "hello" > logs/log.txt
+          echo "hello" > ~/log.txt
       - persist_to_workspace:
           root: ~/
           paths:
-            - logs/log.txt
+            - log.txt
   read_log_file:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/logs
-      - run: echo $(ls /tmp)
-      - run: echo $(ls /tmp/logs)
-      - run: cat "/tmp/logs/log.txt"
+          at: ~/
+      - run: cat "~/log.txt"
 workflows:
   say-hello-workflow:
     jobs:
