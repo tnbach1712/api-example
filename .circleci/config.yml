@@ -22,7 +22,7 @@ jobs:
           mkdir logs
           echo "hello" > logs/log.txt
       - persist_to_workspace:
-          root: /tmp/logs
+          root: /tmp
           paths:
             - "**/*"
   read_log_file:
