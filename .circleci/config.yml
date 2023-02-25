@@ -26,9 +26,11 @@ jobs:
       - persist_to_workspace:
           at: /var/log
   read_log_file:
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: cat 'log.txt'
+      - run: cat "log.txt"
       - attach_workspace:
           at: /var/log
 workflows:
