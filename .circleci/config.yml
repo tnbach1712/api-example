@@ -23,7 +23,7 @@ jobs:
       - persist_to_workspace:
           root: /var/log
           paths:
-            - /
+            - *
   read_log_file:
     docker:
       - image: circleci/node:13.8.0
