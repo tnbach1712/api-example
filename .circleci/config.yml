@@ -30,6 +30,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - run: echo $(ls /tmp)
       - run: cat "/tmp/logs/log.txt"
       - attach_workspace:
           at: /tmp/logs
