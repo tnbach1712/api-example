@@ -21,7 +21,7 @@ jobs:
       - run: |
           echo "hello" > log.txt
       - persist_to_workspace:
-          root: /var/log
+          root: /tmp/log
           paths:
             - "**/*"
   read_log_file:
@@ -31,7 +31,7 @@ jobs:
       - checkout
       - run: cat "log.txt"
       - attach_workspace:
-          at: /var/log
+          at: /tmp/log
 workflows:
   say-hello-workflow:
     jobs:
