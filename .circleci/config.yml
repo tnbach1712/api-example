@@ -8,7 +8,7 @@ defaultds: &defaults
 jobs:
   create_infra:
     docker:
-      image: amazon/aws-cli
+      - image: amazon/aws-cli
     steps:
       - checkout
       - run: 
