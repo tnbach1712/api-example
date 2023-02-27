@@ -15,7 +15,7 @@ jobs:
           name: Create stack 
           command: |
             aws cloudformation deploy \
-                --template-file ../devops/cloudfomation/main.yaml \
+                --template-file ./devops/cloudfomation/main.yaml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
 workflows:
